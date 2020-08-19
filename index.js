@@ -1,4 +1,4 @@
-function replaceAttr (token, attrName, replace, env) {
+function replaceAttr(token, attrName, replace, env) {
   token.attrs.forEach(function (attr) {
     if (attr[0] === attrName) {
       attr[1] = replace(attr[1], env, token)
@@ -28,6 +28,7 @@ module.exports = function (md, opts) {
           if (blockToken.type === 'inline' && blockToken.children) {
             blockToken.children.forEach(function (token) {
               var type = token.type
+              console.log(type)
               if (type === 'link_open') {
                 replaceAttr(token, 'href', replace, state.env)
               } else if (type === 'image') {
